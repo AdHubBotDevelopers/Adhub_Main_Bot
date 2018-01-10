@@ -17,9 +17,7 @@ client.on('ready', () => {
 client.on('message', message => {
   // If the message is "ping"
 
-  if (!message.content.startsWith('/')) {
-    break;
-  }
+  if (!message.content.startsWith('/')) return;
 
   if(message.content.substr(1, 11) == 'testcommand')
   {
