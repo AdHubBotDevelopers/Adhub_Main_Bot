@@ -3,7 +3,7 @@ var openDB = require('json-file-db');
 // Create an instance of a Discord client
 const client = new Discord.Client();
 
-const config = require('config.json');
+const config = require('./config.json');
 // The token of your bot - https://discordapp.com/developers/applications/me
 const token = config.token;
 
