@@ -92,6 +92,7 @@ client.on('message', message => {
     }
   }
   if(message.content.substr(1, 6) == 'review')
+    if(!message.member.roles.some(r=>["DC | Advertiser"])) {
   {
     var add = openDB("review.json");
     var arr = message.content.split(' ');
@@ -105,6 +106,7 @@ client.on('message', message => {
     client.fetchInvite(message.content.split(' ')[1]).then(g => {
         add.put({id: g.guild.id, name: g.guid.name}, function(err) {});
     });
+  }
   }
 });
 
