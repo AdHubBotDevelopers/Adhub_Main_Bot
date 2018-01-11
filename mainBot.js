@@ -81,7 +81,7 @@ client.on('message', message => {
   }   
   if(message.content.substr(1, 5) == 'apply')
   {
-    if(message.content.split(' ').length == 2)
+    if(message.content.split(' ').length == 3)
     {
       client.fetchInvite(message.content.split(' ')[1]).then(g => {
         message.channel.send(g.guild.name);
