@@ -37,13 +37,6 @@ client.on('message', message => {
       client.destroy();
     }
   }
-  if(message.content.substr(1, 9) == 'sendEmbed')
-  {
-    if(message.author.id == "118455061222260736")
-    {
-      message.channel.send(message.content.substring(11));
-    }
-  }
   if(message.content.substr(1, 3) == 'ban')
   {
     if(!message.member.roles.some(r=>["DC | Admin", "AdHub | Board of Directors"].includes(r.name)) )    
@@ -86,13 +79,6 @@ client.on('message', message => {
       message.guild.members.find(val => val.id == message.author.id).removeRole(role);
     }
   }   
-  if(message.content.substr(1, 17) == 'overrideChanPerms')
-  {
-    if(message.author.id == "118455061222260736")
-    {
-      var channels = message.mentions.channels;
-    }
-  }
   if(message.content.substr(1, 5) == 'apply')
   {
     if(message.content.split(' ').length == 2)
@@ -101,6 +87,8 @@ client.on('message', message => {
         message.channel.send(g.guild.name);
 
       });
+    } else {
+      message.reply('Invalid Invite Code! Please try again, or contact a Bot Dev if you think this is an error');
     }
   }
   if(message.content.substr(1, 6) == 'review')
