@@ -91,7 +91,7 @@ client.on('message', message => {
           channy.send(g.guild.name + "\n" + message.author + "\n" + g + "\n" + message.content.split(' ')[2]);
         }catch(err)
         {
-          message.reply(" sorry the code you provided is not valid.");
+          message.reply("Sorry, the invite code you have provided is not valid.");
         }    
       });
     
@@ -102,12 +102,12 @@ client.on('message', message => {
     //var add = openDB("review.json");
     if(!message.member.roles.some(r=>["DC | Advertiser", "AdHub | Board of Directors"].includes(r.name)) )
     {
-      return message.reply(" you do not have permissions to perform this command");
+      return message.reply("You do not have the correct permissions to perform this command!");
     }
     var arr = message.content.split(' ');
     if(arr.length <= 3)
     {
-      return message.reply(" sorry, incorrect arguments");
+      return message.reply("Sorry, you have provided incorrect arguments.");
     }
     var revie = "";
     for(var i = 3; i<arr.length; i++)
@@ -119,7 +119,7 @@ client.on('message', message => {
     
     if(coolDownArr.indexOf(message.author.id) >= 0)
     {
-      return message.reply(" please wait before executing this command again.");
+      return message.reply("Please wait before executing this command again.");
     }
 
     var chan = message.guild.channels.find(val => val.name == message.mentions.channels.first().name);
