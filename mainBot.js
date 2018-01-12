@@ -79,7 +79,7 @@ client.on('message', message => {
       message.guild.members.find(val => val.id == message.author.id).removeRole(role);
     }
   }   
-  if(message.content.substr(1, 6) == 'apply')
+  if(message.content.split(' ')[0] == '/apply')
   {
     if(message.content.split(' ').length == 3)
     {
@@ -90,12 +90,12 @@ client.on('message', message => {
           channy.send(g.guild.name + "\n" + message.author + "\n" + g + "\n" + message.content.split(' ')[2]);
         }catch(err)
         {
-          message.reply("sorry the code you provided is not valid.");
+          message.reply(" sorry the code you provided is not valid.");
         }    
       });
     
     }
-}
+  }
   if(message.content.substr(1, 6) == 'review')
     if(!message.member.roles.some(r=>["DC | Advertiser"])) {
   {
