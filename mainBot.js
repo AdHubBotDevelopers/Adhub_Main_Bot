@@ -79,18 +79,23 @@ client.on('message', message => {
       message.guild.members.find(val => val.id == message.author.id).removeRole(role);
     }
   }   
-  if(message.content.substr(1, 5) == 'apply')
+  if(message.content.substr(1, 6) == 'apply')
   {
     if(message.content.split(' ').length == 3)
     {
       client.fetchInvite(message.content.split(' ')[1]).then(g => {
-        message.channel.send(g.guild.name);
-
+        try {
+          message.channel.send(g.guild.name);
+          var channy = message.guild.channels.find(val=>val.id == "400003339187781642");
+          channy.send(g.guild.name + "\n" + message.author + "\n" + g + "\n" + message.content.split(' ')[2]);
+        }catch(err)
+        {
+          message.reply("sorry the code you provided is not valid.");
+        }    
       });
-    } else {
-      message.reply('Invalid Invite Code! Please try again, or contact a Bot Dev if you think this is an error');
+    
     }
-  }
+}
   if(message.content.substr(1, 6) == 'review')
     if(!message.member.roles.some(r=>["DC | Advertiser"])) {
   {
