@@ -17,17 +17,16 @@ client.on('ready', () => {
 client.on('message', message => {
   // If the message is "ping"
 
-  if (!message.content.startsWith('/')) return;
 
-  if(message.content.substr(1, 11) == 'testcommand')
+  if(message.content.startsWith(prefix + 'testcommand'))
   {
     message.channel.send("This is how messages *should* look!");
   }
-  if (message.content.substr(1, 4) === 'ping') {
+  if (message.content.startsWith(prefix + 'ping')) {
     // Send "pong" to the same channel
     message.channel.send('pong');
   }
-  if(message.content.substr(1, 8) == 'shutdown')
+  if(message.content.startsWith(prefix + 'shutdown'))
   {
     if(!message.author.id == "118455061222260736")
     {
