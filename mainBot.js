@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 var openDB = require('json-file-db');
+var jsonfile = require('jsonfile')
 // Create an instance of a Discord client
 const client = new Discord.Client();
 
@@ -103,6 +104,10 @@ client.on('message', message => {
     {
       message.reply(" the invite is " + invite.code);
       // Add databasing.
+      var file = '/tmp/invites.json'
+      jsonfile.readFile(file, function(err, obj) {
+        obj.push({server: message.content.split('register').substring(1), code: invite.code});
+      });      
     }
   }
   if(message.content.startsWith(prefix + 'review'))
