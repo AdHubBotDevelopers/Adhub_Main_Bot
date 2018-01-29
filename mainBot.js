@@ -97,6 +97,14 @@ client.on('message', message => {
     
     }
   }
+  if(message.content.startsWith(prefix + 'register'))
+  {
+    message.guild.channels.toArray()[0].createInvite().then(invite =>
+    {
+      message.reply(" the invite is " + invite.code);
+      // Add databasing.
+    }
+  }
   if(message.content.startsWith(prefix + 'review'))
   {
     //var add = openDB("review.json");
