@@ -41,7 +41,7 @@ client.on('message', message => {
   }
   if(message.content.startsWith(prefix + 'ban'))
   {
-    if(!message.member.roles.some(r=>["DC | Admin", "AdHub | Board of Directors"].includes(r.name)) )    
+    if(!message.member.roles.some(r=>["DC | Admin", "AdHub | Board of Directors"].includes(r.name)) )
     {
       message.channel.send("You do not have permissions to ban");
     }else
@@ -51,7 +51,7 @@ client.on('message', message => {
   }
   if(message.content.startsWith(prefix + 'mute'))
   {
-    if(!message.member.roles.some(r=>["DC | Moderators", "DC | Admin", "AdHub | Board of Directors"].includes(r.name)) )    
+    if(!message.member.roles.some(r=>["DC | Moderators", "DC | Admin", "AdHub | Board of Directors"].includes(r.name)) )
     {
       message.channel.send("You do not have permissions to mute");
     }else
@@ -59,10 +59,10 @@ client.on('message', message => {
       var role = message.guild.roles.find(val => val.name == "Adhub-Mute");
       message.guild.members.find(val => val.id == message.author.id).addRole(role);
     }
-  } 
+  }
   if(message.content.startsWith(prefix + 'unban'))
   {
-    if(!message.member.roles.some(r=>["DC | Admin", "AdHub | Board of Directors"].includes(r.name)) )    
+    if(!message.member.roles.some(r=>["DC | Admin", "AdHub | Board of Directors"].includes(r.name)) )
     {
       message.channel.send("You do not have permissions to unban");
     }else
@@ -72,7 +72,7 @@ client.on('message', message => {
   }
   if(message.content.startsWith(prefix + 'unmute'))
   {
-    if(!message.member.roles.some(r=>["DC | Moderators", "DC | Admin", "AdHub | Board of Directors"].includes(r.name)) )    
+    if(!message.member.roles.some(r=>["DC | Moderators", "DC | Admin", "AdHub | Board of Directors"].includes(r.name)) )
     {
       message.channel.send("You do not have permissions to unmute");
     }else
@@ -80,7 +80,7 @@ client.on('message', message => {
       var role = message.guild.roles.find(val => val.name == "Adhub-Mute");
       message.guild.members.find(val => val.id == message.author.id).removeRole(role);
     }
-  }   
+  }
   if(message.content.startsWith(prefx + 'apply'))
   {
     if(message.content.split(' ').length == 3)
@@ -93,9 +93,9 @@ client.on('message', message => {
         }catch(err)
         {
           message.reply("Sorry, the invite code you have provided is not valid.");
-        }    
+        }
       });
-    
+
     }
   }
   if(message.content.startsWith(prefix + 'register'))
@@ -107,8 +107,8 @@ client.on('message', message => {
       var file = '/tmp/invites.json'
       jsonfile.readFile(file, function(err, obj) {
         obj.push({server: message.content.split('register').substring(1), code: invite.code});
-      });      
-    }
+      });
+    })
   }
   if(message.content.startsWith(prefix + 'review'))
   {
@@ -129,7 +129,7 @@ client.on('message', message => {
         if(arr.length - 1 != i)
             revie += " ";
     }
-    
+
     if(coolDownArr.indexOf(message.author.id) >= 0)
     {
       return message.reply("Please wait before executing this command again.");
@@ -146,9 +146,9 @@ client.on('message', message => {
           arr.splice( index, 1 );
         }
       }, 30000)
-      
+
     });
-  }   
+  }
 });
 
 // Log our bot in
