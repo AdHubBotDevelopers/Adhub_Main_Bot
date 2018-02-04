@@ -81,7 +81,7 @@ client.on('message', message => {
       message.guild.members.find(val => val.id == message.author.id).removeRole(role);
     }
   }
-  if(message.content.startsWith(prefx + 'apply'))
+  if(message.content.startsWith(prefix + 'apply'))
   {
     if(message.content.split(' ').length == 3)
     {
