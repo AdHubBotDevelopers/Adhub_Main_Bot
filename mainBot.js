@@ -31,12 +31,12 @@ client.on('message', message => {
   }
   if(message.content.startsWith(prefix + 'shutdown'))
   {
-    if(!message.author.id == "118455061222260736")
-    {
-      message.channel.send("Nice try m8");
-    }else
+    if(message.author.id == "118455061222260736")
     {
       client.destroy();
+    }else
+    {
+      message.reply(`Well looky here. Someone thinks they're a prankster. I've got news. ***YOU'RE NOT FUNNY***`);
     }
   }
   if(message.content.startsWith(prefix + 'ban'))
@@ -85,9 +85,10 @@ client.on('message', message => {
   {
     if(message.content.split(' ').length == 3)
     {
+      try {
       client.fetchInvite(message.content.split(' ')[1]).then(g => {
-        try {
-          message.channel.send(g.guild.name);
+
+          message.channel.send(`Thank you for sending your application for ${g.guild.name}! Our reviewers will get to work on that right away.`);
           var channy = message.guild.channels.find(val=>val.id == "400003339187781642");
           channy.send(g.guild.name + "\n" + message.author + "\n" + g + "\n" + message.content.split(' ')[2]);
         }catch(err)
