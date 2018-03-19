@@ -85,19 +85,20 @@ client.on('message', message => {
   {
     if(message.content.split(' ').length == 3)
     {
-      try {
       client.fetchInvite(message.content.split(' ')[1]).then(g => {
-
+        
           message.channel.send(`Thank you for sending your application for ${g.guild.name}! Our reviewers will get to work on that right away.`);
           var channy = message.guild.channels.find(val=>val.id == "400003339187781642");
           channy.send(g.guild.name + "\n" + message.author + "\n" + g + "\n" + message.content.split(' ')[2]);
-        }catch(err)
+        
         {
           message.reply("Sorry, the invite code you have provided is not valid.");
         }
-      });
+      }).catch(err).then(function(err) {
+        message.reply(`Sorry, the invite code you provided was not valid.`);
+      })
 
-    }
+    
   }
   if(message.content.startsWith(prefix + 'register'))
   {
@@ -150,6 +151,7 @@ client.on('message', message => {
 
     });
   }
+}
 });
 
 // Log our bot in
